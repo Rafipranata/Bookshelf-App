@@ -99,10 +99,19 @@ const books = [];
                 });
             
                 buttonContainer.append(undoButton);
+            
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('btn', 'btn-danger');
+                deleteButton.innerText = 'Hapus';
+                deleteButton.addEventListener('click', function () {
+                    removeBookFromCompleted(id);
+                });
+            
+                buttonContainer.append(deleteButton);
                 } else {
                 const completeButton = document.createElement('button');
                 completeButton.classList.add('btn', 'btn-success');
-                completeButton.innerText = 'Selesai Dibaca';
+                completeButton.innerText = 'Sudah Dibaca';
                 completeButton.addEventListener('click', function () {
                     addBookToCompleted(id);
                 });
@@ -117,20 +126,12 @@ const books = [];
                 buttonContainer.append(completeButton, editButton);
                 }
             
-                const deleteButton = document.createElement('button');
-                deleteButton.classList.add('btn', 'btn-danger');
-                deleteButton.innerText = 'Hapus';
-                deleteButton.addEventListener('click', function () {
-                removeBookFromCompleted(id);
-                });
-            
-                buttonContainer.append(deleteButton);
-            
                 cardBody.append(buttonContainer);
                 container.append(cardBody);
             
                 return container;
             }
+
             
             function editBook(id) {
                 const book = findBook(id);
